@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.filesystem.dao.TreeDao" >
+  <resultMap id="baseMap" type="com.filesystem.entity.Tree" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="dict_key" property="dictKey" jdbcType="VARCHAR" />
+    <result column="dict_cn" property="dictCn" jdbcType="VARCHAR" />
+    <result column="dict_value" property="dictValue" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="findTreeList" parameterType="java.util.Map" resultMap="baseMap">
+  	select * from tree where pid=#{pid} 
+  </select>
+  <insert id="insertTree" parameterType="java.util.Map">
+  	insert into tree(pid,dict_key,dict_cn,sort,status,dict_value) 
+  	values(#{info.pid,jdbcType=INTEGER},#{info.dictKey,jdbcType=VARCHAR},
+  	#{info.dictCn,jdbcType=VARCHAR},#{info.sort,jdbcType=INTEGER},#{info.status,jdbcType=INTEGER},#{info.dictValue,jdbcType=VARCHAR})
+  </insert>
+  <update id="editDict" parameterType="java.util.Map">
+  	update tree 
+  	<set>
+  		<if test="info.dictKey != null" >
+       		 dict_key = #{info.dictKey ,jdbcType=VARCHAR},
+      </if>
+  		<if test="info.dictCn != null" >
+       		 dict_cn = #{info.dictCn ,jdbcType=VARCHAR},
+      </if>
+  		<if test="info.dictValue!= null" >
+       		 dict_Value = #{info.dictValue ,jdbcType=VARCHAR},
+      </if>
+  		<if test="info.sort!= null" >
+       		 dict_Value = #{info.sort ,jdbcType=INTEGER},
+      </if>
+  		<if test="info.status!= null" >
+       		 dict_Value = #{info.status ,jdbcType=INTEGER},
+      </if>
+  	</set>
+  	where id=id=#{info.id,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteDict" parameterType="java.util.Map">
+  	delete from tree where id=#{info.id,jdbcType=INTEGER}
+  </delete>
+  <select id="detailDict" parameterType="java.util.Map" resultMap="baseMap">
+  	select * from tree where  id=#{info.id,jdbcType=INTEGER}
+  </select>
+</mapper>

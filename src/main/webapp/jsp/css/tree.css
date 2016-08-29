@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.center{
+	margin-left: 50px;
+	margin-top: 50px;;
+}
+ul{
+	font-size:20px;
+	min-width:30px;
+	color: red;
+	display: block;
+	background:url(../img/plus.png) no-repeat ;	
+	background-position:1px 13px;
+}
+ul>li{
+	font-size:15px;
+	min-width:25px;
+	color:blue;
+	list-style:none;
+	display: block;
+}
+.table td{
+	width: 25%;
+ 	text-align: center; 
+}
