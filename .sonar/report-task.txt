@@ -1,5 +1,0 @@
-projectKey=SpringMVC
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/SpringMVC
-ceTaskId=AVZ91MLo_zhG1ZkijyJF
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVZ91MLo_zhG1ZkijyJF
